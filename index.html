@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <style>
+    * { box-sizing: border-box;}
+    #view {
+      width: 100%;
+    }
+    .box {
+      width: 200px; height: 200px;
+      background: goldenrod;
+      float: left;
+      width: 33.33%;
+      border: 5px solid #fff;
+    }
+  </style>
+</head>
+<body>
+  <div id="view"></div>
+
+  <script>
+    var data = [
+      'cat', 'dog', 'cat',
+      'bird', 'bird', 'dog',
+      'cat', 'dog', 'bird'
+    ]
+
+    var html = '';
+    for(var i = 0; i < data.length; i++) {
+      html += `<div class="box">${data[i]}</div>`;
+    }
+    var view = document.querySelector('#view');
+    view.innerHTML = html;
+
+    var recent_name = '';
+    var current_name = '';
+    // var box = document.querySelectorAll('b')
+    for(var i = 0; )
+    $('.box').click(function(){
+      current_name = $(this).text();
+      console.log(recent_name, current_name)
+      $(this).css('color', 'red');
+      recent_name = current_name;
+      
+    })
+
+  </script>
+</body>
+</html>
