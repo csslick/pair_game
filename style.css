@@ -1,0 +1,66 @@
+* {
+  margin: 0; padding: 0;
+  box-sizing: border-box;
+}
+
+#view {
+  width: 600px;
+  margin: 0 auto;
+}
+
+.card-container {
+  width: 200px;
+  height: 200px;      
+  float: left;
+  perspective: 400px;
+}
+
+.card {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  transition: 0.5s;
+  transform-style: preserve-3d;
+}
+.card-container:hover > .card {
+  transform: rotateY(180deg);
+}
+
+.front {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background: goldenrod;
+  border: 5px solid #fff;
+  transform: rotateY(180deg);
+  backface-visibility: hidden;
+  z-index: 1;
+}
+
+.back {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background: #ccc;
+  border: 5px solid #fff;
+  transform: rotateY(0deg);
+  backface-visibility: hidden;
+}
+
+.front h2, .back span {
+  /* position: absolute; */
+}
+
+.dog, .cat, .bird {
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.dog {
+  background-image: url('./images/dog.svg');
+}
+.cat {
+  background-image: url('./images/cat.svg');
+}
+.bird {
+  background-image: url('./images/bird.svg');
+}
