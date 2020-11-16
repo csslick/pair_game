@@ -36,8 +36,8 @@
     var recent_name = '';
     var current_name = '';
 
-    $('.box').click(function () {
-      current_name = $(this).text();
+    $('.card-container').click(function () {
+      current_name = $(this).find('h2').text();
       console.log(recent_name, current_name)
       if (recent_name == current_name) {
         console.log('same!');
