@@ -1,24 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <style>
-    * { box-sizing: border-box;}
-    #view {
-      width: 100%;
+    * {
+      margin: 0; padding: 0;
+      box-sizing: border-box;
     }
-    .box {
-      width: 200px; height: 200px;
-      background: goldenrod;
+
+    #view {
+      width: 600px;
+      margin: 0 auto;
+    }
+
+    .card-container {
+      width: 200px;
+      height: 200px;      
       float: left;
-      width: 33.33%;
+      perspective: 400px;
+    }
+
+    .card {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      transition: 0.5s;
+      transform-style: preserve-3d;
+    }
+    .card-container:hover > .card {
+      transform: rotateY(180deg);
+    }
+
+    .front {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      background: goldenrod;
       border: 5px solid #fff;
+      transform: rotateY(0deg);
+      backface-visibility: hidden;
+      z-index: 1;
+    }
+
+    .back {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      background: #ccc;
+      border: 5px solid #fff;
+      transform: rotateY(180deg);
+      backface-visibility: hidden;
+    }
+
+    .front h2, .back span {
+      /* position: absolute; */
     }
   </style>
 </head>
+
 <body>
   <div id="view"></div>
 
@@ -30,24 +73,33 @@
     ]
 
     var html = '';
-    for(var i = 0; i < data.length; i++) {
-      html += `<div class="box">${data[i]}</div>`;
+    for (var i = 0; i < data.length; i++) {
+      html += `
+        <div class="card-container">
+          <div class="card">
+            <div class="front"><h2>${data[i]}</h2></div>
+            <div class="back"><span>${data[i]}</span></div>
+          </div>
+        </div> <!-- end card-container -->
+      `;
     }
     var view = document.querySelector('#view');
     view.innerHTML = html;
 
     var recent_name = '';
     var current_name = '';
-    // var box = document.querySelectorAll('b')
-    for(var i = 0; )
-    $('.box').click(function(){
+
+    $('.box').click(function () {
       current_name = $(this).text();
       console.log(recent_name, current_name)
+      if (recent_name == current_name) {
+        console.log('same!');
+      }
       $(this).css('color', 'red');
       recent_name = current_name;
-      
     })
 
   </script>
 </body>
+
 </html>
